@@ -1,0 +1,231 @@
+/* =========================================================
+   Studio Ferreira
+   Autor: Katia Rodrigues | Revisão: Copilot
+   ========================================================= */
+
+/* ====== Variáveis e tema ====== */
+:root {
+  --rosa: #ec899d;
+  --rosa-suave: #FBE3E8;
+  --texto: #555555;
+  --texto-escuro: #2b2b2b;
+  --branco: #ffffff;
+  --preto: #000000;
+  --nav-altura: 80px;
+  --radius: 12px;
+  --shadow-sm: 0 6px 18px rgba(0,0,0,.08);
+  --shadow-md: 0 10px 24px rgba(0,0,0,.12);
+}
+
+/* ====== Base ====== */
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--texto);
+  background: var(--branco);
+}
+section { scroll-margin-top: calc(var(--nav-altura) + 16px); }
+
+/* ====== Tipografia ====== */
+.brand-title {
+  font-family: "Playfair Display", serif;
+  letter-spacing: .3px;
+  color: var(--texto-escuro);
+  margin: 0;
+}
+
+/* ====== Botões ====== */
+.btn-rosa {
+  --bs-btn-bg: var(--rosa) !important;
+  --bs-btn-border-color: var(--rosa) !important;
+  --bs-btn-hover-bg: #eea6b6;
+  --bs-btn-hover-border-color: #eea6b6;
+  --bs-btn-color: var(--texto-escuro) !important;
+  --bs-btn-hover-color: var(--texto-escuro) !important;
+  box-shadow: var(--shadow-sm) !important;
+  border-radius: 999px !important;
+  padding: .9rem 1.3rem !important;
+  font-weight: 600 !important;
+}
+.btn-outline-rosa {
+  --bs-btn-color: var(--branco) !important;
+  --bs-btn-border-color: rgba(255,255,255,.85) !important;
+  --bs-btn-hover-bg: rgba(255,255,255,.14);
+  --bs-btn-hover-border-color: rgba(255,255,255,.95);
+  border-radius: 999px !important;
+  padding: .9rem 1.3rem !important;
+  font-weight: 600 !important;
+}
+
+/* ====== Navegação ====== */
+.nav-glass {
+  height: var(--nav-altura);
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,.85);
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+.nav-link {
+  color: var(--texto-escuro);
+  font-weight: 600;
+  opacity: .9;
+  outline: none;
+}
+.nav-link:hover,
+.nav-link:focus-visible { opacity: 1; color: #b44b63; text-decoration: none; }
+.nav-link.active { color: #b44b63 !important; opacity: 1; }
+
+/* ====== Hero ====== */
+.hero {
+  position: relative;
+  min-height: calc(100vh - var(--nav-altura));
+  display: grid;
+  align-items: center;
+  padding: 7rem 0 5rem;
+  color: var(--branco);
+  background:
+    linear-gradient(rgba(0,0,0,.48), rgba(0,0,0,.48)),
+    url(img/hero.jpg) center / cover no-repeat;
+  overflow: hidden;
+}
+/* Ativa attachment: fixed apenas em telas grandes (melhor performance mobile) */
+@media (min-width: 992px){
+  .hero{ background-attachment: fixed; }
+}
+
+/* Bolhas decorativas mais suaves */
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, rgba(244,182,194,.35), rgba(244,182,194,0));
+  filter: blur(1px);
+  pointer-events: none;
+  opacity: .9;
+}
+.hero::before { top: -180px; left: -180px; }
+.hero::after  { bottom: -220px; right: -220px; transform: rotate(18deg); }
+
+.hero h1 {
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  letter-spacing: -.3px;
+  line-height: 1.08;
+  text-shadow: 0 10px 24px rgba(0,0,0,.25);
+}
+.hero .lead {
+  font-weight: 500;
+  opacity: .95;
+  max-width: 46ch;
+}
+
+/* ====== Componentes ====== */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.2);
+  padding: .45rem .75rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: .95rem;
+  backdrop-filter: blur(10px);
+}
+.section-pad { padding: 5rem 0; }
+.section-soft { background: var(--rosa-suave); }
+.card-soft {
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+.icon-badge {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: rgba(244,182,194,.35);
+  color: #9b3f55;
+  font-size: 1.4rem;
+  flex: 0 0 auto;
+}
+.img-cover {
+  width: 90%;
+  height: 90%;
+  object-fit: cover;
+  border-radius: calc(var(--radius) + 6px);
+}
+.divider { height: 1px; background: rgba(0,0,0,.08); }
+
+/* ====== Rodapé ====== */
+footer { background: #111; color: rgba(255,255,255,.82); }
+footer a { color: rgba(255,255,255,.9); }
+
+/* ====== Formulário ====== */
+.form-control,
+.form-select {
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,.12);
+  padding: .85rem 1rem;
+}
+.form-control:focus,
+.form-select:focus {
+  border-color: rgba(244,182,194,.95);
+  box-shadow: 0 0 0 .25rem rgba(244,182,194,.25);
+}
+
+/* ====== Acessibilidade ====== */
+:focus-visible { outline: 3px solid rgba(244,182,194,.65); outline-offset: 2px; }
+
+/* Utilitárias */
+.shadow-hard { box-shadow: 0 12px 28px rgba(0,0,0,.16); }
+
+
+
+/* ===== Preferências de movimento ===== */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .nav-glass { backdrop-filter: none; }
+}
+
+/* ===== Responsividade geral ===== */
+:root {
+  --container-pad: 1rem;
+}
+
+@media (min-width: 576px) {
+  .hero { padding: 7rem 0 5rem; }
+}
+
+@media (max-width: 575.98px) {
+  .hero { padding: 6rem 0 3rem; }
+  .hero h1 { font-size: 2rem; }
+  .hero .lead { font-size: 1rem; }
+  .chip { font-size: .9rem; }
+  .section-pad { padding: 3.5rem 0; }
+  .btn-rosa, .btn-outline-rosa { padding: .8rem 1.1rem !important; }
+}
+
+/* ===== Navbar: contraste do toggler em fundo claro ===== */
+.navbar-light .navbar-toggler {
+  border-color: rgba(0,0,0,.15);
+}
+.navbar-light .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0,0,0,.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* ===== Cards/galeria em telas pequenas ===== */
+@media (max-width: 991.98px) {
+  .icon-badge { width: 48px; height: 48px; font-size: 1.2rem; }
+}
+
+@media (max-width: 767.98px) {
+  .brand-title { font-size: 1.5rem; }
+}
+
+/* ===== Rodapé — melhor espaçamento em mobile ===== */
+footer .small a { opacity: .9; }
+footer .small a:hover { opacity: 1; }
